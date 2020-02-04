@@ -23,7 +23,7 @@ def accept_connection(server_socket):
 def send_message(client_socket):
     request = client_socket.recv(4096)   # ждет от клиента сообщения
 
-    if request:	# условие для прерывания цикла
+    if request:
         response = 'Hello, World!\n'.encode()   # закодирует в bytes
         client_socket.send(response)
     else:
