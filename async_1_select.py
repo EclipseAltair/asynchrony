@@ -1,4 +1,4 @@
-#!/usr/bin
+# -*- coding: utf-8 -*-
 import socket
 from select import select   # мониторинг изменений состояний файловых объектов и сокетов
 # в unix - всё - файлы
