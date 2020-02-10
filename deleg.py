@@ -7,26 +7,27 @@ def coroutine(func):
     return inner
 
 
-class CustomException(Exception):
-    pass
-
-
-@coroutine
+#@coroutine
 def subgen():
     while True:
         try:
             message = yield
-        except CustomException:
-            print('Exception')
+        except StopIteration:
+            # print('Exception')
+            break
         else:
             print('...', message)
+    return 'Returned from subgen()'
 
 
 @coroutine
 def delegator(g):
-    while True:
-        try:
-            data = yield
-            g.send(data)
-        except CustomException as e:
-            g.throw(e)
+    #while True:
+    #    try:
+    #        data = yield
+    #        g.send(data)
+    #    except StopIteration as e:
+    #        g.throw(e)
+
+    result = yield from g
+    print(result)
